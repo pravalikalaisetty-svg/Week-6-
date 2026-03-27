@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Quicksand:wght@400;500&display=swap');
+
+:root {
+  --house-gold: #ffc500;
+  --dark-magic: #1a120b;
+  --parchment: #f4ebd0;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animated Floating Background */
+.hogwarts-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #2c1e12 0%, #000 100%);
+  color: var(--parchment);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hogwarts-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+  background-size: 550px 550px, 350px 350px;
+  animation: backgroundMove 60s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes backgroundMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+.wizard-font {
+  font-family: 'Cinzel Decorative', cursive;
+  color: var(--house-gold);
+  text-shadow: 0 0 10px rgba(255, 197, 0, 0.5);
+  font-size: 3.5rem;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Card Styling */
+.product-card {
+  background: rgba(44, 30, 18, 0.8);
+  border: 1px solid #5c4033;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 20px var(--house-gold);
+}
+
+.magic-button {
+  background: var(--house-gold);
+  color: black;
+  border: none;
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Skeleton UI Animation */
+.skeleton {
+  background: #332211;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
